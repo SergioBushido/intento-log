@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router'; // Importa Router desde '@angular/router'
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -18,7 +19,10 @@ export class RegisterComponent {
   accessToken: string | null = null;
   refreshToken: string | null = null;
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router // Agrega Router como una dependencia
+  ) { }
 
   register(): void {
     this.authService.register(this.user).subscribe({
@@ -31,7 +35,8 @@ export class RegisterComponent {
         this.accessToken = response.access_token;
         this.refreshToken = response.refresh_token;
 
-        // Redirección u otra lógica después del registro
+        // Redirige al usuario a la página de artículos después del registro exitoso
+        this.router.navigate(['/article']); // Utiliza el enrutador para navegar a la ruta de artículos
       },
       error: (error) => {
         console.error('Hubo un error al registrar', error);

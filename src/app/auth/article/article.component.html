@@ -1,1 +1,15 @@
-<p>article works!</p>
+<!-- article.component.html -->
+<div>
+    <h2>Lista de Artículos</h2>
+    <ul>
+      <li *ngFor="let article of articles">
+        <h3>{{ article.title }}</h3>
+        <p>{{ article.content }}</p>
+        <!-- Añade más campos según tu modelo de 'Article' -->
+       <h1>mierda</h1>
+        <pre>{{ article }}</pre>
+
+      </li>
+    </ul>
+  </div>
+  
