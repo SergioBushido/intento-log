@@ -36,7 +36,8 @@ export class RegisterComponent {
         this.refreshToken = response.refresh_token;
 
         // Redirige al usuario a la página de artículos después del registro exitoso
-        this.router.navigate(['/article']); // Utiliza el enrutador para navegar a la ruta de artículos
+       // this.router.navigate(['/article']); // Utiliza el enrutador para navegar a la ruta de artículos
+       this.router.navigate(['/register']);
       },
       error: (error) => {
         console.error('Hubo un error al registrar', error);
