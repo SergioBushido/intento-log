@@ -3,20 +3,25 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router'; // Importa RouterModule aquí
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { LoginComponent } from '../app/auth/login/login.component';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot([]) // Añade RouterModule aquí con su método forRoot()
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
