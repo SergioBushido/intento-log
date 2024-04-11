@@ -1,3 +1,4 @@
+
 <div>
   <h2>Registro</h2>
   <form (submit)="register()">
@@ -6,4 +7,14 @@
     <input type="password" name="password" [(ngModel)]="user.password" placeholder="Contraseña" required>
     <button type="submit">Registrarse</button>
   </form>
+  <!-- Elementos para mostrar los tokens -->
+  <div *ngIf="accessToken">
+    <h3>Access Token</h3>
+    <p>{{ accessToken }}</p>
+  </div>
+  <div *ngIf="refreshToken">
+    <h3>Refresh Token</h3>
+    <p>{{ refreshToken }}</p>
+  </div>
 </div>
+

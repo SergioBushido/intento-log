@@ -7,23 +7,34 @@ import { AuthService } from '../auth.service';
   styleUrls: []
 })
 export class RegisterComponent {
+  // Las propiedades del usuario
   user: any = {
-    username: '', // Agrega las propiedades correspondientes al usuario
+    username: '',
     email: '',
     password: ''
-  }; // Objeto para almacenar los datos del usuario del formulario
+  };
+
+  // Variables para almacenar los tokens
+  accessToken: string | null = null;
+  refreshToken: string | null = null;
 
   constructor(private authService: AuthService) { }
 
   register(): void {
     this.authService.register(this.user).subscribe({
       next: (response) => {
-        console.log(response); // Maneja la respuesta del servidor
-        // Lógica adicional, por ejemplo, redireccionar al usuario a otra página
+        // Almacena los tokens en el localStorage
+        localStorage.setItem('access_token', response.access_token);
+        localStorage.setItem('refresh_token', response.refresh_token);
+
+        // Asigna los tokens a las variables para mostrarlos en la plantilla
+        this.accessToken = response.access_token;
+        this.refreshToken = response.refresh_token;
+
+        // Redirección u otra lógica después del registro
       },
       error: (error) => {
-        console.error(error); // Maneja el error
-        // Lógica adicional, por ejemplo, mostrar un mensaje de error al usuario
+        console.error('Hubo un error al registrar', error);
       }
     });
   }
